@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-export default function FormButton({
+export default function FormButtonCustom({
   disabled,
   variant,
   type,
@@ -36,7 +36,7 @@ export default function FormButton({
   );
 }
 
-FormButton.propTypes = {
+FormButtonCustom.propTypes = {
   size: PropTypes.string,
   disabled: PropTypes.bool,
   variant: PropTypes.string,
@@ -47,7 +47,7 @@ FormButton.propTypes = {
   dataTestId: PropTypes.string,
 };
 
-FormButton.defaultProps = {
+FormButtonCustom.defaultProps = {
   size: 'md',
   disabled: false,
   variant: 'primary',

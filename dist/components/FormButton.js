@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = FormButton;
+exports.default = FormButtonCustom;
 
 require("core-js/modules/es.object.assign.js");
 
@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function FormButton(_ref) {
+function FormButtonCustom(_ref) {
   let {
     disabled,
     variant,
@@ -41,7 +41,7 @@ function FormButton(_ref) {
   }));
 }
 
-FormButton.propTypes = {
+FormButtonCustom.propTypes = {
   size: _propTypes.default.string,
   disabled: _propTypes.default.bool,
   variant: _propTypes.default.string,
@@ -51,7 +51,7 @@ FormButton.propTypes = {
   showLoader: _propTypes.default.bool,
   dataTestId: _propTypes.default.string
 };
-FormButton.defaultProps = {
+FormButtonCustom.defaultProps = {
   size: 'md',
   disabled: false,
   variant: 'primary',

@@ -1,5 +1,5 @@
-import FormButton from './components/FormButton';
+import FormButtonCustom from './components/FormButton';
 
 export{
-    FormButton
+    FormButtonCustom
 };
