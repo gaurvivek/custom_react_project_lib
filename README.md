@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# custom_react_project_lib
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Customisable componentas for react
 
-## Available Scripts
+[![](https://img.shields.io/npm/v/custom_react_project_lib.svg)](https://www.npmjs.com/package/custom_react_project_lib)
 
-In the project directory, you can run:
+### Features
 
-### `yarn start`
+- configurable via `prop`s
+- total custom components overrides for all internals via render prop callbacks (with access to internal props, state and methods)
+- stylable via css (or custom components)
+- portal support for rendering button outside local DOM tree. e.g. in `document.body`
+- auto position
+- small bundle size
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+> `npm install --save custom_react_project_lib`
+### Web site
 
-### `yarn test`
+[Web site, docs and demo](https://github.com/gaurvivek/custom_react_project_lib)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Usage
 
-### `yarn build`
+import:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`import { FormButtonCustom } from 'custom_react_project_lib';`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+and use as:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```jsx
+<FormButtonCustom variant={"secondary"} showLoader={isFormSubmit} />
+```
 
-### `yarn eject`
+> **all** props are optional
+### Help and Contributions
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### How to help/contribute
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- fix issues, pull request are very welcome
+- write, improve docs
+- write tests (we use jest)
+- suggest features and improvements
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# API
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Component props
 
-## Learn More
+| Prop                                                                                        | Type        | Default        | Description                                                                                                                            |
+| ------------------------------------------------------------------------------------------- | ----------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| size                                                                                      | string       | 'md'             | size strings values                                                                                                                        |
+| otherProps                                                                                     | array       | []             | Available options, (option with key `disabled: true` will be disabled)                                                                 |
+| disabled                                                                                    | bool        | false          | If true, button will always stay open                                                                           |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT](https://github.com/sanusart/react-dropdown-select/blob/master/LICENSE)
