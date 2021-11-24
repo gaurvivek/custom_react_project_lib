@@ -2,7 +2,9 @@
 
 Customisable componentas for react
 
+[![](https://badgen.net/bundlephobia/minzip/react-dropdown-select)](https://bundlephobia.com/package/custom_react_project_lib)
 [![](https://img.shields.io/npm/v/custom_react_project_lib.svg)](https://www.npmjs.com/package/custom_react_project_lib)
+[![](https://github.com/gaurvivek/custom_react_project_lib)](https://github.com/gaurvivek/custom_react_project_lib)
 
 ### Features
 
