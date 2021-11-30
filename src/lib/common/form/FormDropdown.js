@@ -3,8 +3,8 @@ import { Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export default function FormDropDown({
-  placeholder, options, isInvalid,
-  value, onChange, size,
+  name, placeholder, options, isInvalid,
+  value, onChange, size, dataTestId, ...otherProps
 }) {
   return (
     <>
@@ -12,11 +12,22 @@ export default function FormDropDown({
         aria-label={placeholder}
         size={size}
         value={value}
+        name={name}
         onChange={onChange}
         isInvalid={isInvalid}
+        data-testid={dataTestId}
+        defaultValue={value}
+        {...otherProps}
       >
-        <option>{placeholder}</option>
-        {options && options.map((option) => <option key={option.key} value={option.key}>{option.value}</option>)}
+        <option value="" key="">{placeholder}</option>
+        {options && options.map((option) => (
+          <option
+            key={option.key}
+            value={option.key}
+          >
+            {option.value}
+          </option>
+        ))}
       </Form.Select>
     </>
   );
@@ -31,9 +42,13 @@ FormDropDown.propTypes = {
       value: PropTypes.string,
     }),
   ).isRequired,
+  name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
+  otherProps: PropTypes.shape({}),
+  defaultValue: PropTypes.string,
+  dataTestId: PropTypes.string,
 };
 
 FormDropDown.defaultProps = {
@@ -41,4 +56,7 @@ FormDropDown.defaultProps = {
   size: 'lg',
   placeholder: '',
   value: '',
+  otherProps: {},
+  defaultValue: '',
+  dataTestId: 'form-select',
 };

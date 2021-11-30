@@ -1,5 +1,7 @@
 "use strict";
 
+require("core-js/modules/es.object.assign.js");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -17,7 +19,15 @@ var _FormFeedback = _interopRequireDefault(require("./FormFeedback"));
 
 var _FormDropdown = _interopRequireDefault(require("./FormDropdown"));
 
+const _excluded = ["name", "options", "value", "onChange", "placeholder", "isInvalid"];
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 // For select dropdown
 function FormGroupSelect(_ref) {
@@ -30,26 +40,31 @@ function FormGroupSelect(_ref) {
   const {
     labelText
   } = labelProps;
+
   const {
+    name,
     options,
     value,
     onChange,
     placeholder,
     isInvalid
-  } = inputProps;
+  } = inputProps,
+        otherProps = _objectWithoutProperties(inputProps, _excluded);
+
   const {
     type: feedbackType,
     message
   } = feedBackProps;
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, groupProps, /*#__PURE__*/_react.default.createElement(_FormLabel.default, {
     labelText: labelText
-  }), /*#__PURE__*/_react.default.createElement(_FormDropdown.default, {
+  }), /*#__PURE__*/_react.default.createElement(_FormDropdown.default, _extends({
     options: options,
+    name: name,
     value: value,
     onChange: onChange,
     placeholder: placeholder,
     isInvalid: isInvalid
-  }), /*#__PURE__*/_react.default.createElement(_FormFeedback.default, {
+  }, otherProps)), /*#__PURE__*/_react.default.createElement(_FormFeedback.default, {
     type: feedbackType,
     message: message
   }));
@@ -68,10 +83,12 @@ FormGroupSelect.propTypes = {
       value: _propTypes.default.string
     })).isRequired,
     value: _propTypes.default.string,
+    name: _propTypes.default.string.isRequired,
     onChange: _propTypes.default.func.isRequired,
     placeholder: _propTypes.default.string,
     type: _propTypes.default.string,
-    isInvalid: _propTypes.default.bool
+    isInvalid: _propTypes.default.bool,
+    otherProps: _propTypes.default.shape({})
   }),
   feedBackProps: _propTypes.default.shape({
     type: _propTypes.default.string,

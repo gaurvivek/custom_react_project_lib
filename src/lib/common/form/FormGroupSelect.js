@@ -15,23 +15,26 @@ export default function FormGroupSelect({
 }) {
   const { labelText } = labelProps;
   const {
+    name,
     options,
     value,
     onChange,
     placeholder,
     isInvalid,
+    ...otherProps
   } = inputProps;
   const { type: feedbackType, message } = feedBackProps;
-
   return (
     <Form.Group {...groupProps}>
       <FormLabel labelText={labelText} />
       <FormDropDown
         options={options}
+        name={name}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
         isInvalid={isInvalid}
+        {...otherProps}
       />
       <FormFeedback
         type={feedbackType}
@@ -59,10 +62,12 @@ FormGroupSelect.propTypes = {
       }),
     ).isRequired,
     value: PropTypes.string,
+    name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
     type: PropTypes.string,
     isInvalid: PropTypes.bool,
+    otherProps: PropTypes.shape({}),
   }),
   feedBackProps: PropTypes.shape({
     type: PropTypes.string,

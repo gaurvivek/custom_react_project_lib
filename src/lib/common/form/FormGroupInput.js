@@ -20,7 +20,7 @@ export default function FormGroupInput({
   const {
     type, value,
     onChange, placeholder,
-    isInvalid, otherProps,
+    isInvalid, ...otherProps
   } = inputProps;
   const { type: feedbackType, message } = feedBackProps;
   const [passwordCtrlType, setPasswordCtrlType] = useState(
