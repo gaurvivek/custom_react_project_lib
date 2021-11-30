@@ -1,0 +1,66 @@
+@import "./variables", "./extendable.scss";
+
+.tableContainer {
+    border-color: $table-border-color;
+    border-width: $table-border-width;
+    border-style: $table-border-style;
+    margin: 0px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    overflow: hidden;
+    table {
+        margin: 0px;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        overflow: hidden;
+        thead {
+            background: $table-header-background;
+            color: $table-header-font-color;
+            th {
+                padding: $table-cell-padding-x $table-cell-padding-y;
+                font-size: $table-header-font-size;
+                vertical-align: top;
+            }
+        }
+        tbody {
+            background: $table-body-background;
+            td {
+                padding: $table-cell-padding-x $table-cell-padding-y;
+                font-size: $table-cell-font-size;
+                border-bottom-color: $table-border-color;
+            }
+            tr:last-child {
+                td {
+                    border-bottom: 0;
+                }
+            }
+            .noDataFoundContainer {
+                min-height: 590px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                align-content: space-around;
+                justify-content: center;
+                align-items: center;
+                .errorMessage {
+                    font-size: 18px;
+                    font-weight: 600;
+                    display: block;
+                    margin-bottom: 10px;
+                }
+                .errorMessageInfo {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+.loadMore {
+    margin: 30px auto 30px auto;
+    text-align: center;
+    button {
+        border-width: 2px;
+        padding: 13px 30px;
+    }
+}
