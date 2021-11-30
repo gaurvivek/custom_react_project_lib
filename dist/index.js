@@ -45,12 +45,6 @@ Object.defineProperty(exports, "CustomEyeSlash", {
     return _EyeSlash.default;
   }
 });
-Object.defineProperty(exports, "CustomField", {
-  enumerable: true,
-  get: function get() {
-    return _CustomField.default;
-  }
-});
 Object.defineProperty(exports, "CustomFooter", {
   enumerable: true,
   get: function get() {
@@ -163,7 +157,5 @@ var _Loader = _interopRequireDefault(require("./common/Loader"));
 var _Modal = _interopRequireDefault(require("./common/Modal"));
 
 var _Toast = _interopRequireDefault(require("./common/Toast"));
-
-var _CustomField = _interopRequireDefault(require("./common/CustomField"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
