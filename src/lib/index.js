@@ -19,6 +19,7 @@ import CustomFooter from './common/Footer';
 import CustomLoader from './common/Loader';
 import CustomCCWModal from './common/Modal';
 import CustomToast from './common/Toast';
+import CustomToastContainer from './common/ToastContainer';
 
 export {
     CustomFormButton,
@@ -39,5 +40,6 @@ export {
     CustomFooter,
     CustomLoader,
     CustomCCWModal,
-    CustomToast
+    CustomToast,
+    CustomToastContainer
 };

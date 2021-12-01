@@ -117,6 +117,12 @@ Object.defineProperty(exports, "CustomToast", {
     return _Toast.default;
   }
 });
+Object.defineProperty(exports, "CustomToastContainer", {
+  enumerable: true,
+  get: function get() {
+    return _ToastContainer.default;
+  }
+});
 
 require("./assets/css/common.scss");
 
@@ -157,5 +163,7 @@ var _Loader = _interopRequireDefault(require("./common/Loader"));
 var _Modal = _interopRequireDefault(require("./common/Modal"));
 
 var _Toast = _interopRequireDefault(require("./common/Toast"));
+
+var _ToastContainer = _interopRequireDefault(require("./common/ToastContainer"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
