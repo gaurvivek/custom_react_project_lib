@@ -7,6 +7,7 @@ export default function FormButton({
   variant,
   type,
   btnText,
+  onClick,
   otherProps,
   showLoader,
   size,
@@ -19,6 +20,7 @@ export default function FormButton({
       variant={variant}
       type={type}
       data-testid={dataTestId}
+      onClick={onClick}
       {...otherProps}
     >
       {btnText}
@@ -45,6 +47,7 @@ FormButton.propTypes = {
   otherProps: PropTypes.shape({}),
   showLoader: PropTypes.bool,
   dataTestId: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 FormButton.defaultProps = {
@@ -56,4 +59,5 @@ FormButton.defaultProps = {
   otherProps: {},
   showLoader: false,
   dataTestId: 'form-button',
+  onClick: () => null,
 };

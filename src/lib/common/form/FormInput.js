@@ -2,38 +2,25 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-export default function FormInput({
-  size, type, placeholder, otherProps,
-  onChange, value, isInvalid,
-}) {
+export default function FormLabel({ labelText, styleClasses, otherProps }) {
   return (
-    <Form.Control
-      size={size}
-      type={type}
-      placeholder={placeholder}
-      isInvalid={isInvalid}
-      onChange={onChange}
-      value={value}
-      {...otherProps}
-    />
+    <Form.Label className={styleClasses} {...otherProps}>
+      {labelText}
+    </Form.Label>
   );
 }
 
-FormInput.propTypes = {
-  size: PropTypes.string,
-  type: PropTypes.string,
-  isInvalid: PropTypes.bool,
-  placeholder: PropTypes.string,
+FormLabel.propTypes = {
+  styleClasses: PropTypes.string,
+  labelText: PropTypes.oneOfType([
+    PropTypes.elementType,
+    PropTypes.string,
+  ]),
   otherProps: PropTypes.shape({}),
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
 };
 
-FormInput.defaultProps = {
-  size: 'lg',
-  type: 'text',
-  isInvalid: false,
-  placeholder: '',
+FormLabel.defaultProps = {
+  styleClasses: 'form-label-bold',
+  labelText: '',
   otherProps: {},
-  value: '',
 };

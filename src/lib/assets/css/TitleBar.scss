@@ -1,0 +1,22 @@
+@import "./variables";
+
+.titlebar-container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3%;
+
+  span.title {
+    font-size: 27px;
+    font-weight: 600;
+    margin-right: 3%;
+  }
+
+  button.title-btn {
+    height: 50px;
+    margin-left: auto;
+    order: 2;
+    padding: 0 2%;
+  }
+}

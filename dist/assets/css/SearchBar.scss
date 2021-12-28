@@ -1,0 +1,41 @@
+@import "./variables";
+
+.searchbar-container {
+  width: 500px;
+  height: inherit;
+  background: #ffffff;
+  border-radius: 10px;
+  .input-group {
+    height: inherit;
+    & > * {
+      height: inherit;
+    }
+    .form-select {
+      border-radius: 0;
+      height: inherit;
+      display: inline-flex;
+      border-right: none;
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+      box-shadow: none;
+      outline: none;
+    }
+
+    input.form-control {
+      border-right: 0;
+
+      &:focus,
+      &:active,
+      &:hover {
+        border-right: 0;
+        border-color: $input-border-color;
+      }
+    }
+
+    .input-group-text {
+      border-left: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+}

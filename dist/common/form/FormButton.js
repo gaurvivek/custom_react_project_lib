@@ -23,6 +23,7 @@ function FormButton(_ref) {
     variant,
     type,
     btnText,
+    onClick,
     otherProps,
     showLoader,
     size,
@@ -33,7 +34,8 @@ function FormButton(_ref) {
     disabled: disabled,
     variant: variant,
     type: type,
-    "data-testid": dataTestId
+    "data-testid": dataTestId,
+    onClick: onClick
   }, otherProps), btnText, showLoader && /*#__PURE__*/_react.default.createElement(_reactBootstrap.Spinner, {
     className: "ms-1",
     animation: "border",
@@ -49,7 +51,8 @@ FormButton.propTypes = {
   btnText: _propTypes.default.string,
   otherProps: _propTypes.default.shape({}),
   showLoader: _propTypes.default.bool,
-  dataTestId: _propTypes.default.string
+  dataTestId: _propTypes.default.string,
+  onClick: _propTypes.default.func
 };
 FormButton.defaultProps = {
   size: 'md',
@@ -59,5 +62,6 @@ FormButton.defaultProps = {
   btnText: '',
   otherProps: {},
   showLoader: false,
-  dataTestId: 'form-button'
+  dataTestId: 'form-button',
+  onClick: () => null
 };

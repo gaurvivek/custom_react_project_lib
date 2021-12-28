@@ -23,8 +23,6 @@ var _EyeSlash = _interopRequireDefault(require("../Icon/EyeSlash"));
 
 var _Eye = _interopRequireDefault(require("../Icon/Eye"));
 
-const _excluded = ["type", "value", "onChange", "placeholder", "isInvalid"];
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -37,10 +35,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 // For email, password & text input
 function FormGroupInput(_ref) {
   let {
@@ -52,16 +46,14 @@ function FormGroupInput(_ref) {
   const {
     labelText
   } = labelProps;
-
   const {
     type,
     value,
     onChange,
     placeholder,
-    isInvalid
-  } = inputProps,
-        otherProps = _objectWithoutProperties(inputProps, _excluded);
-
+    isInvalid,
+    otherProps
+  } = inputProps;
   const {
     type: feedbackType,
     message
@@ -105,7 +97,8 @@ FormGroupInput.propTypes = {
     controlId: _propTypes.default.string
   }),
   labelProps: _propTypes.default.shape({
-    labelText: _propTypes.default.oneOfType([_propTypes.default.elementType, _propTypes.default.string])
+    labelText: _propTypes.default.oneOfType([_propTypes.default.elementType, _propTypes.default.string]),
+    disabled: _propTypes.default.bool
   }),
   inputProps: _propTypes.default.shape({
     value: _propTypes.default.string,
@@ -123,7 +116,8 @@ FormGroupInput.propTypes = {
 FormGroupInput.defaultProps = {
   groupProps: {},
   labelProps: {
-    labelText: ''
+    labelText: '',
+    disabled: false
   },
   inputProps: {
     value: '',

@@ -8,77 +8,17 @@ import classes from '../../assets/css/table.module.scss';
 import Loader from '../Loader';
 import Search from '../Icon/Search';
 
-function TableNoRecord({ colSpan, show, isLoading }) {
-  if (!show || isLoading) {
-    return null;
-  }
-  return (
-    <tr>
-      <td colSpan={colSpan}>
-        <span className={classes.noDataFoundContainer}>
-          <span className={classes.noRecordIconContainer}>
-            <Search Fill="#9A9A9A" Height={40} Width={40} />
-          </span>
-          <span className={classes.errorMessage}>
-            No Results Found
-          </span>
-          <span className={classes.errorMessageInfo}>
-            Try adjusting your search to find what you’re looking for.
-          </span>
-        </span>
-      </td>
-    </tr>
-  );
-}
-
-/**
- * @param {*} :
- *    columnData: data/content of table
-  *   columnCount: pagesizre of table
-  *   tableSchema: template of data table,
-  *   loadMore: function to call api for load more data
-  *   isResponsive/isHover for material ui table attribute accepts Boolean
-  *   className attributes for header and columns
-  *   noData: to show no data found
-  *   headerClass : class name for header row i.e tr
-  *   rowInfo: contains className and onClick function which are applied on columns
- */
-
-/**
- * @param {*} :tableSchema
- * header:
- *    renderHeader render's component
- *    className: class for header column
- *    colSpan: class for header colSpan
- *
- * tableBody:
- *    render render's component
- *    className: class for cell
- *    onClick: click function for column
- *    style: style for one cell
- */
-
-export default function DataTable({
+const AppTable = ({
   isReponsive,
   isHover,
   headerClass,
-  isLoadMore,
-  isLoading,
-  rowInfo,
-  handleLoadMore,
   tableSchema,
   tableBody,
-}) {
-  const loadMore = async () => {
-    //   const columnCount = this.state.columnCount + 20;
-    //   this.setState({
-    //     columnCount,
-    //     filteredData: this.props.columnData.slice(0, columnCount),
-    //   });
-    if (handleLoadMore) {
-      handleLoadMore();
-    }
-  };
+  rowInfo,
+  isLoading,
+  isLoadMore,
+  handleLoadMore
+}) => {
   let header = [];
   let bodyExtractor = [];
   if (Array.isArray(tableSchema)) {
@@ -88,76 +28,84 @@ export default function DataTable({
   return (
     <>
       {isLoading && <Loader />}
-      <div className={classes.tableContainer}>
-        <Table responsive={isReponsive} hover={isHover}>
-          <thead>
-            <tr className={headerClass || ''}>
-              {header.map((headerObj, i) => (
-                <th
-                  key={i}
-                  colSpan={headerObj.colSpan || undefined}
-                  className={`td-th-prop ${headerObj.className ? headerObj.className : ''}`}
-                >
-                  {headerObj.renderHeader()}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="device-list-tbody">
-            {!isLoading
-            && tableBody.map((row, j) => (
-              <tr
-                key={j}
-                onClick={(e) => rowInfo.onClick(e, row, j)}
-                className={rowInfo.className(row)}
-              >
-                {bodyExtractor.map((extractor, k) => (
-                  <td
-                    key={k}
-                    style={extractor.style || undefined}
-                    onClick={extractor.onClick ? (e) => extractor.onClick(e, row) : undefined}
+      <>
+        <div className={classes.tableContainer}>
+          <Table responsive={isReponsive} hover={isHover}>
+            <thead>
+              <tr className={headerClass || ''}>
+                {header.map((headerObj, i) => (
+                  <th
+                    key={i}
+                    colSpan={headerObj.colSpan || undefined}
+                    className={headerObj.className ? headerObj.className : ''}
                   >
-                    {extractor.render(row, j)}
-                  </td>
+                    {headerObj.renderHeader()}
+                  </th>
                 ))}
               </tr>
-            ))}
-            <TableNoRecord
-              colSpan={header.length}
-              show={tableBody.length < 1}
-              isLoading={isLoading}
-            />
-          </tbody>
-        </Table>
-
-        {isLoadMore && !isLoading && (
+            </thead>
+            <tbody>
+              {tableBody.length ? tableBody.map((row, j) => (
+                <tr
+                  data-testid="table-row"
+                  key={j}
+                  onClick={(e) => rowInfo.onClick(e, row, j)}
+                  className={rowInfo.className(row)}
+                >
+                  {bodyExtractor.map((extractor, k) => (
+                    <td
+                      data-testid="table-data-column"
+                      key={k}
+                      style={extractor.style || undefined}
+                      onClick={extractor.onClick ? (e) => extractor.onClick(e, row) : undefined}
+                    >
+                      {extractor.render(row, j)}
+                    </td>
+                  ))}
+                </tr>
+              ))
+                : !isLoading &&
+                <tr>
+                  <td colSpan={header.length}>
+                    <div className={classes.noDataFoundContainer}>
+                      <div className={classes.noRecordIconContainer}>
+                        <Search Fill="#9A9A9A" Height={40} Width={40} />
+                      </div>
+                      <div className={classes.errorMessage}>
+                        No Results Found
+                      </div>
+                      <div className={classes.errorMessageInfo}>
+                        Try adjusting your search to find what you’re looking for.
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </Table>
+        </div>
+        {tableBody.length > 0 && isLoadMore &&
           <div className={classes.loadMore}>
             <FormButton
-              disabled={false}
               type="button"
-              otherProps={{ className: 'fw-bold sign-in' }}
               btnText="Load More"
-              onClick={loadMore}
+              onClick={handleLoadMore}
               variant="outline-primary"
             />
           </div>
-        )}
-      </div>
-
+        }
+      </>
     </>
-  );
+  )
 }
-
-DataTable.propTypes = {
+AppTable.propTypes = {
   isReponsive: PropTypes.bool,
   isHover: PropTypes.bool,
   headerClass: PropTypes.string,
   isLoadMore: PropTypes.bool,
   isLoading: PropTypes.bool,
   rowInfo: PropTypes.shape({
-    onClick: PropTypes.oneOfType([
-      PropTypes.func,
-    ]),
+    onClick: PropTypes.func,
     className: PropTypes.func,
   }),
   handleLoadMore: PropTypes.func,
@@ -176,7 +124,7 @@ DataTable.propTypes = {
   ),
 };
 
-DataTable.defaultProps = {
+AppTable.defaultProps = {
   isReponsive: true,
   isHover: true,
   headerClass: '',
@@ -191,12 +139,4 @@ DataTable.defaultProps = {
   tableBody: [],
 };
 
-TableNoRecord.propTypes = {
-  show: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  colSpan: PropTypes.number.isRequired,
-};
-TableNoRecord.defaultProps = {
-  show: false,
-  isLoading: false,
-};
+export default AppTable;

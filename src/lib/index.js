@@ -20,6 +20,9 @@ import CustomLoader from './common/Loader';
 import CustomCCWModal from './common/Modal';
 import CustomToast from './common/Toast';
 import CustomToastContainer from './common/ToastContainer';
+import CustomSearchBar from './common/searchBar/SearchBar';
+import CustomBreadCrumbs from './common/breadcrum/Breadcrum';
+import CustomTitleBar from './common/titleBar/TitleBar';
 
 export {
     CustomFormButton,
@@ -41,5 +44,8 @@ export {
     CustomLoader,
     CustomCCWModal,
     CustomToast,
-    CustomToastContainer
+    CustomToastContainer,
+    CustomSearchBar,
+    CustomBreadCrumbs,
+    CustomTitleBar
 };

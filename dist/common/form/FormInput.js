@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = FormInput;
+exports.default = FormLabel;
 
 require("core-js/modules/es.object.assign.js");
 
@@ -17,40 +17,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function FormInput(_ref) {
+function FormLabel(_ref) {
   let {
-    size,
-    type,
-    placeholder,
-    otherProps,
-    onChange,
-    value,
-    isInvalid
+    labelText,
+    styleClasses,
+    otherProps
   } = _ref;
-  return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, _extends({
-    size: size,
-    type: type,
-    placeholder: placeholder,
-    isInvalid: isInvalid,
-    onChange: onChange,
-    value: value
-  }, otherProps));
+  return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, _extends({
+    className: styleClasses
+  }, otherProps), labelText);
 }
 
-FormInput.propTypes = {
-  size: _propTypes.default.string,
-  type: _propTypes.default.string,
-  isInvalid: _propTypes.default.bool,
-  placeholder: _propTypes.default.string,
-  otherProps: _propTypes.default.shape({}),
-  onChange: _propTypes.default.func.isRequired,
-  value: _propTypes.default.string
+FormLabel.propTypes = {
+  styleClasses: _propTypes.default.string,
+  labelText: _propTypes.default.oneOfType([_propTypes.default.elementType, _propTypes.default.string]),
+  otherProps: _propTypes.default.shape({})
 };
-FormInput.defaultProps = {
-  size: 'lg',
-  type: 'text',
-  isInvalid: false,
-  placeholder: '',
-  otherProps: {},
-  value: ''
+FormLabel.defaultProps = {
+  styleClasses: 'form-label-bold',
+  labelText: '',
+  otherProps: {}
 };

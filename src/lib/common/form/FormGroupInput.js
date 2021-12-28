@@ -20,7 +20,7 @@ export default function FormGroupInput({
   const {
     type, value,
     onChange, placeholder,
-    isInvalid, ...otherProps
+    isInvalid, otherProps,
   } = inputProps;
   const { type: feedbackType, message } = feedBackProps;
   const [passwordCtrlType, setPasswordCtrlType] = useState(
@@ -68,6 +68,7 @@ FormGroupInput.propTypes = {
       PropTypes.elementType,
       PropTypes.string,
     ]),
+    disabled: PropTypes.bool,
   }),
   inputProps: PropTypes.shape({
     value: PropTypes.string,
@@ -87,6 +88,7 @@ FormGroupInput.defaultProps = {
   groupProps: {},
   labelProps: {
     labelText: '',
+    disabled: false,
   },
   inputProps: {
     value: '',
