@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = FormLabel;
+exports.default = FormInput;
 
 require("core-js/modules/es.object.assign.js");
 
@@ -17,24 +17,47 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function FormLabel(_ref) {
+function FormInput(_ref) {
   let {
-    labelText,
-    styleClasses,
+    size,
+    type,
+    placeholder,
+    name,
+    onChange,
+    value,
+    isInvalid,
+    dataTestId,
     otherProps
   } = _ref;
-  return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, _extends({
-    className: styleClasses
-  }, otherProps), labelText);
+  return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, _extends({
+    size: size,
+    type: type,
+    name: name,
+    placeholder: placeholder,
+    isInvalid: isInvalid,
+    onChange: onChange,
+    value: value,
+    "data-testid": dataTestId
+  }, otherProps));
 }
 
-FormLabel.propTypes = {
-  styleClasses: _propTypes.default.string,
-  labelText: _propTypes.default.oneOfType([_propTypes.default.elementType, _propTypes.default.string]),
-  otherProps: _propTypes.default.shape({})
+FormInput.propTypes = {
+  size: _propTypes.default.string,
+  type: _propTypes.default.string,
+  isInvalid: _propTypes.default.bool,
+  name: _propTypes.default.string.isRequired,
+  placeholder: _propTypes.default.string,
+  otherProps: _propTypes.default.shape({}),
+  onChange: _propTypes.default.func.isRequired,
+  value: _propTypes.default.string,
+  dataTestId: _propTypes.default.string
 };
-FormLabel.defaultProps = {
-  styleClasses: 'form-label-bold',
-  labelText: '',
-  otherProps: {}
+FormInput.defaultProps = {
+  size: 'lg',
+  type: 'text',
+  isInvalid: false,
+  placeholder: '',
+  otherProps: {},
+  value: '',
+  dataTestId: 'form-input'
 };

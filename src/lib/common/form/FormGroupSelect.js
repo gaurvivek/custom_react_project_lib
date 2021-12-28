@@ -2,6 +2,10 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
+import FormLabel from './FormLabel';
+import FormFeedback from './FormFeedback';
+import FormDropDown from './FormDropdown';
+
 export default function FormGroupSelect({
   groupProps,
   labelProps,
